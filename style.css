@@ -1,0 +1,28 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 22px;
+}
+table {
+    width: 70%;
+}
+table, th, td {
+    border : 1px solid black;
+    border-collapse: collapse;
+    
+}
+td{
+    text-align: center;
+    color : #ff0000;
+}
+th {
+    background-color: gray;
+}
+tr{
+    background-color: #00ff00;
+}
+.title{
+    font-size: 12;
+    color : rgb(240, 13, 13);
+    height : 19px;
+    border: 1px dashed;
+}

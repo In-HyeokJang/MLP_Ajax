@@ -1,0 +1,48 @@
+<!-- 이게 내가 만든거 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let number = 0
+        function add(){
+            // div 태그 검색
+            let parentdiv = document.getElementById("textHolder");
+            // parentdiv에  document안에 ID중 textHolder를 찾아와 넣어준다.
+            let divel = document.createElement("div");
+            // divel 변수를 만들고 새로운 div를 만든다.
+            number +=1;
+            divel.innerHTML= `파일 선택${number}`+  "<input type='file' name='file'/>";
+            //divel.appenChild(document.createTextNode(`파일선택${++nmber}`));
+            // let fild = document.createElement('input');
+            //file.type='file';
+            //divel.appendChild(file);
+            // divel
+            parentdiv.appendChild(divel);
+
+        }
+        function remove(){
+            let parentdiv = document.getElementById("textHolder");
+            if(parentdiv.firstChild){
+                parentdiv.removeChild(parentdiv.lastChild)
+                number -= 1;
+            } 
+            // if(number > 0){
+            //     parentdiv.removeChild(parentdiv.lastChild);
+            //     --number;
+            // }
+        }
+    </script>
+</head>
+<body>
+    <body>
+        <button onclick="add()" name="btnAdd">파일 선택 추가</button>
+        <button onclick="remove()" name="btnAdd">파일 선택 제거</button>
+    <br>
+    <div id="textHolder">
+        </div>
+</body>
+</html>

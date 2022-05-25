@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 함수 만들기
+        function show(){ //함수
+            document.getElementById('content').style.display='';
+            //document.getElementById('content').style.visibility=''; 
+        }
+        function hide(){ // 함수
+            document.getElementById('content').style.display='none';  // display='none' 하면 숨기기 // 영역까지 다 없앰
+            //document.getElementById('content').style.visibility='hidden'; // 영역만 없어짐
+        }
+    </script>
+</head>
+<body>
+    <div id="content">
+        DIV 태그 출력<br/>
+        <img src='http://www.apache.org/images/ac2008us_343x114.jpg' width='300' height='250'>
+    
+    </div>
+
+    <button onclick="show()">div show</button>
+    <button onclick="hide()">div hide</button>
+</body>
+</html>

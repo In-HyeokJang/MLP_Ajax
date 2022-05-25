@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script type="text/javascript">
+    let number = 0;
+function show()
+{ 
+    //  -- div 태그 검색 , 
+    var parentdiv = document.getElementById("textHolder");
+                    // ㄴ주어진 문자열과 일치하는 id 속성을 가진 요소를 찾고, 이를 나타내는 Element 객체를 반환
+    // -- 새로운 div 태그 생성
+    var divel = document.createElement("div");
+    
+    divel.innerHTML += `파일 선택 : ${++number}`+"<input type='file' name='file'/>";
+    //  `파일 선택${++number}`+  "<input type='file' name='file'/>"
+    // -- 새로운 div 태그에 텍스트 생성
+    // divel.appendChild(document.createTextNode("CBD Developer 8"));
+    // 동적으로 버튼 만들기
+    var btn = document.createElement('button');
+    // 버튼 안에 텍스트를 만들어서             
+    var btnText = document.createTextNode( '파일 선택 추가'+"<input type='file' name='file'/>" );
+    // 선택한 요소 안에 자식 요소를 추가
+    btn.appendChild(btnText);
+    // 선택한 요소 안에 자식 요소를 추가
+    divel.appendChild(btn);
+    // -- 새로운 div 태그를 부모 div 태그인 'textHolder'에 추가
+    parentdiv.appendChild(divel);
+}    //   ㄴ> 버튼 안에 버튼을 넣고 그 버튼 안에는 텍스트가 있다.
+function remove() {
+    var parentdiv = document.getElementById("textHolder");
+    if(parentdiv.firstChild) {
+        parentdiv.removeChild(parentdiv.lastChild);
+        number -= 1;
+    }
+}
+
+// $('#target_img').click(function show() {
+//     document.signform.target_url.value = document.getElementById('target_img').src;
+//     e.preventDefault();
+//     $('#file').click();
+// });
+
+// <div> 
+//     <img id = "target_img" src = "target_img_name.png"
+//     </div>
+
+</script>
+</head>
+<body>
+    <input type="button" onclick="show()" onclick="test()" value="파일 선택 추가" />
+    <input type="button" name="btnAdd" onclick = "remove()" value="파일 선택 제거" />
+
+    <div id="textHolder"></div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 대분류
+        const addressList = ["서울","인천","경기도","강원도"];
+        
+        // 중분류
+        const gugunListSeoul = ["노원구", "강남구", "구로구", "마포구"];
+        const gugunListIncheon = ["남동구", "부평구", "서구", "계양구"];
+        const gugunListKy = ["부천시", "시흥시", "안양시", "수원시"];
+
+        window.onload = function(){ // 이름 없는 함수 
+            let sido = document.getElementById('sidoSelect'); // 변수 선언 , sidoSelect 찾는다.
+            for(let i=0; i<addressList.length; i++){
+                let optionel = document.createElement('option'); // select안에 들어갈 옵션 태그만들기
+                optionel.value = addressList[i]; // addressList가 가지고 있는 값이 i에 들어간다.
+
+                // 태그와 태그 사이에 text만들기
+                optionel.appendChild(document.createTextNode(addressList[i])); // addressLsit[i]값이 들어간다.
+                sido.appendChild(optionel); // sido에 optonel 들어간 text를 넣어준다. //<body>안에 option에 들어간다.
+            }
+            // gugunSelect 와 getArea는 사라지게 만든다
+            let gugun = document.getElementById('gugunSelect');
+            let btnArea = document.getElementById('btnArea');
+            gugun.style.display= 'none';
+            btnArea.style.display = 'none';
+        }
+
+        function changeSidoSelect(){
+            let sido = document.getElementById('sidoSelect');
+            let idx = sido.options.selectedIndex; // 선택한 인덱스의 값을 뽑아온다.
+            let area = document.getElementById('area');
+            area.value = '';
+
+            gugunSelectFill(idx); // idx 선택한 값을 가진다?
+        }
+
+        function gugunSelectFill(idx){
+            let data = null; // 위에서 선언한 중분류 배열이 들어올거여서 null
+            let gugun = document.getElementById('gugunSelect');
+            let btnArea = document.getElementById('btnArea');
+            if(idx == 0){
+                gugun.style.display = 'none'; // 중분류 태그 감추기
+                btnArea.style.display = 'none';
+                return; // return 은 밑으로 내려가지 않고 끝내버림
+            }
+
+            if(idx == 1){data =gugunListSeoul} 
+            if(idx == 2){data = gugunListIncheon}
+            if(idx == 3){data = gugunListKy}
+            if(idx == 4){
+                gugun.style.display = 'none';
+                btnArea.style.display = 'none';
+                alert("아직 현재는 지원하지 않습니다.");
+                retrun;
+
+            }
+
+            gugun.innerHTML = '<option value="">중분류를 선택하세요 </option>;'
+
+
+            // for문안에 두번째 중분류 슬랙트가 들어감
+            for(let i=0; i<data.length; i++){ // 배열에 있는 data를 가져와 
+                // 새로운 <option value=''>값</option> 태그 생성
+                let optionel = document.createElement('option'); // option 태그 만들기
+                // value 속성 태그에 저장
+                optionel.value = data[i];
+                // text 문자열을 새로 생성한 <option> 태그에 추가
+                optionel.appendChild(document.createTextNode(data[i]));
+                // 만들어진 option 태그를 <select>태그에 추가
+                gugun.appendChild(optionel);
+
+            }
+
+            gugun.style.display= '';
+            btnArea.style.display = '';
+        }
+            function getArea(){
+            var area = document.getElementById("area"); // 태그 검색
+            var sido = document.getElementById("sidoSelect");
+            var gugun = document.getElementById("gugunSelect");
+            //alert(sido.value + " " + gugun.value); // 선택값의 출력
+            
+            area.value = sido.value + " " + gugun.value;
+        }
+        
+
+    </script>
+    
+</head>
+<body>
+    <div id="sido">
+        <select id="sidoSelect" onChange="changeSidoSelect();">
+            <option value="">대분류를 선택하세요.</option>
+        </select>
+        
+        <select id="gugunSelect">
+            <option value="">중분류 선택하세요.</option>
+        </select>
+     
+        <label> 
+        <button id="btnArea" name="btnArea" onClick="getArea()">선택</button>
+        선택한 지역: 
+        <input type="text" id="area" size="40">
+        </label>
+    </div>
+</body>
+</html>
